@@ -7,287 +7,263 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            /* overflow-y: hidden; C'est la règle que nous avons supprimée */
-        }
-
-        .container {
-            width: 90%;
-            max-width: 450px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 6px 30px rgba(0, 0, 0, 0.15);
             text-align: center;
-            border: 2px solid #25d366;
-            border-top: 10px solid #128c7e;
-            background: linear-gradient(135deg, #f0f9ff, #d4e7f7);
+            margin: 20px;
+            padding-bottom: 50px; /* Ajout d'espace pour le footer */
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .title {
-            font-size: 22px;
-            margin-bottom: 15px;
-            color: #333;
+            align-items: center;
+            justify-content: flex-start;
         }
 
         select {
-            width: 100%;
             padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        .audio-player-container {
-            width: 100%;
-            margin-top: 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .audio-player {
-            width: 100%;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #128c7e;
-            border-radius: 8px;
-            padding: 5px;
-            position: relative;
-            color: white;
-        }
-
-        .audio-player button {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-            margin: 0 5px;
-        }
-
-        .progress-container {
-            width: 100%;
-            height: 3px;
-            background-color: #ccc;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 8px;
-        }
-
-        .progress-bar {
-            height: 100%;
-            width: 0;
-            background-color: #25d366;
-            border-radius: 5px;
-        }
-
-        .volume-container {
-            width: 80%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 5px;
-        }
-
-        .volume-container input {
-            width: 80%;
-        }
-
-        .form-container {
-            margin-top: 10px;
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        input, textarea {
-            width: 80%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        button {
-            background-color: #25d366;
-            color: white;
-            border: none;
-            padding: 8px 18px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        button:hover {
-            background-color: #128c7e;
-        }
-
-        .footer {
-            font-size: 14px;
-            color: #777;
-            margin-top: 10px;
-        }
-
-        .radio-name {
-            margin-top: 20px;
             font-size: 16px;
-            font-weight: bold;
-            color: #ff5733;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            width: 90%; /* Largeur ajustée pour le select */
+            max-width: 400px; /* Largeur maximale */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #radio-image-container {
+            margin-bottom: 20px;
+            text-align: center;
         }
 
         .radio-icon {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto;
-            display: block;
+            width: 80px; /* Taille réduite */
+            height: 80px;
             margin-bottom: 15px;
+            border-radius: 50%; /* Cercle parfait */
+            border: 3px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
+            background-color: #f9f9f9; /* Fond neutre */
+            display: inline-block;
         }
 
-        .advertisement-space {
-            background-color: #f0f9ff;
-            border: 2px dashed #128c7e;
-            padding: 8px;
-            margin-bottom: 20px;
-            font-size: 12px;
-            color: #333;
-            font-weight: bold;
+        .radio-icon img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover; /* Garde une bonne proportion de l'image */
+        }
+
+        #audio-container {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
             text-align: center;
-            cursor: pointer;
         }
 
-        .advertisement-space:hover {
-            background-color: #d4e7f7;
-            border-color: #25d366;
+        #audio-container audio {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        #volume-control {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #volume-control input[type="range"] {
+            flex: 1;
+            margin: 0 10px;
+        }
+
+        #volume-label {
+            font-size: 14px;
+            color: #555;
+        }
+
+        #radio-name {
+            margin-top: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Style pour l'espace publicité */
+        #advertisement {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        #advertisement a {
+            font-size: 18px;
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #advertisement a:hover {
+            text-decoration: underline;
+        }
+
+        /* Style pour le formulaire WhatsApp */
+        #whatsapp-form {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+            text-align: center; /* Centrer le texte à l'intérieur */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #whatsapp-form input,
+        #whatsapp-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center; /* Centrer le texte à l'intérieur des champs */
+            box-sizing: border-box; /* Inclut padding dans la largeur totale */
+        }
+
+        #whatsapp-form button {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%; /* Le bouton prendra toute la largeur */
+        }
+
+        #whatsapp-form button:hover {
+            background-color: #128C7E;
+        }
+
+        /* Footer Style */
+        footer {
+            background-color: #f1f1f1; /* Même couleur que le fond de la page */
+            padding: 5px; /* Réduit l'espace intérieur du footer */
+            font-size: 14px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 <body>
-
-    <div class="container">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="radio-icon" fill="#128c7e">
-            <rect x="10" y="25" width="80" height="50" rx="10" ry="10" fill="#128c7e"/>
-            <rect x="15" y="30" width="70" height="30" fill="white"/>
-            <line x1="50" y1="10" x2="50" y2="25" stroke="#128c7e" stroke-width="3"/>
-            <circle cx="50" cy="10" r="3" fill="#128c7e"/>
-            <circle cx="25" cy="60" r="5" fill="white"/>
-            <circle cx="75" cy="60" r="5" fill="white"/>
-            <circle cx="50" cy="45" r="8" fill="none" stroke="#128c7e" stroke-width="2"/>
-        </svg>
-
-        <div class="title">Écoutez votre radio préférée</div>
-
-        <select id="radio-select">
-            <option value="" disabled selected>Sélectionnez une radio</option>
-            <option value="https://live.medi1.com/medi1" data-name="Medi 1">Medi 1</option>
-            <option value="http://radiomars.ice.infomaniak.ch/radiomars-128.mp3" data-name="Radio Mars">Radio Mars</option>
-            <option value="http://laradioplus.ice.infomaniak.ch/laradioplus-high.mp3" data-name="Radio Plus Marrakech">Radio Plus Marrakech</option>
-            <option value="http://broadcast.ice.infomaniak.ch/aswat-high.mp3" data-name="Radio Aswat">Radio Aswat</option>
-            <option value="https://listen.radioking.com/radio/635263/stream/698005" data-name="Cap Radio">Cap Radio</option>
-            <option value="http://streaming.radionomy.com/jeunesradioma" data-name="Radio Chabab Maroc">Radio Chabab Maroc</option>
-            <option value="http://listen.radionomy.com/radio-itma" data-name="Radio Aljalia Almaghribia">Radio Aljalia Almaghribia</option>
-        </select>
-
-        <div class="audio-player-container">
-            <div class="audio-player">
-                <button id="playPauseBtn">▶️</button>
-                <div class="progress-container">
-                    <div class="progress-bar" id="progressBar"></div>
-                </div>
-            </div>
-
-            <div class="volume-container">
-                <label for="volumeControl">Volume</label>
-                <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1">
-            </div>
-        </div>
-
-        <div id="radio-message" class="radio-name">Vous écoutez la Radio: </div>
-
-        <a href="http://idrissiseddik.github.io/quran" target="_blank">
-            <div class="advertisement-space">
-                Ajoutez ici votre publicité !
-            </div>
-        </a>
-
-        <div class="form-container">
-            <h3>Contactez-nous via WhatsApp</h3>
-            <form id="whatsapp-form" onsubmit="sendMessage(event)">
-                <input type="text" id="name" placeholder="Votre Nom" required>
-                <textarea id="message" placeholder="Votre Message" required></textarea>
-                <button type="submit">Envoyer via WhatsApp</button>
-            </form>
-        </div>
-
-        <div class="footer">
-            <p>Site créé par M.Seddik Elidrissi</p>
+    <h3>Ecoutez les stations de radio marocaine</h3>
+    <div id="radio-image-container">
+        <!-- SVG stylisé par défaut -->
+        <div id="radio-image" class="radio-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#888" width="100%" height="100%">
+                <circle cx="12" cy="12" r="10" stroke="#ccc" stroke-width="2" fill="#f3f3f3"/>
+                <path d="M7 11h10v2H7v-2zm2-2h6v2H9v-2zm-2 6h10v2H7v-2z" fill="#888"/>
+            </svg>
         </div>
     </div>
 
-    <script>
-        const radioPlayer = new Audio();
-        const playPauseBtn = document.getElementById('playPauseBtn');
-        const radioSelect = document.getElementById('radio-select');
-        const progressBar = document.getElementById('progressBar');
-        const volumeControl = document.getElementById('volumeControl');
-        const radioMessage = document.getElementById('radio-message');
+    <select id="radio-select">
+        <option value="" disabled selected>Sélectionnez une radio</option>
+        <option value="https://live.medi1.com/medi1" data-name="Radio Medi 1" data-image="images/Radio-Medi1.png">Medi 1</option>
+        <option value="http://radiomars.ice.infomaniak.ch/radiomars-128.mp3" data-name="Radio Mars" data-image="images/Radio-Mars.png">Radio Mars</option>
+        <option value="http://laradioplus.ice.infomaniak.ch/laradioplus-high.mp3" data-name="Radio Plus Marrakech" data-image="images/RPM.png">Radio Plus Marrakech</option>
+        <option value="http://broadcast.ice.infomaniak.ch/aswat-high.mp3" data-name="Radio Aswat" data-image="images/Radio-Aswat.png">Radio Aswat</option>
+        <option value="https://listen.radioking.com/radio/635263/stream/698005" data-name="Cap Radio" data-image="images/Cap-Radio.png">Cap Radio</option>
+        <option value="http://streaming.radionomy.com/jeunesradioma" data-name="Radio Chabab Maroc" data-image="images/RCM.png">Radio Chabab Maroc</option>
+        <option value="https://hitradio-maroc.ice.infomaniak.ch/hitradio-maroc-128.mp3" data-name="Hit Radio" data-image="images/Hit-Radio.png">Hit Radio</option>
+        <option value="https://live.medi1.com/medi1" data-name="Radio Medi 1" data-image="images/Radio-Medi1.png">Radio Medi 1</option>
+    </select>
 
-        let isPlaying = false;
+    <div id="audio-container">
+        <audio id="radio-player" controls>
+            <source src="" type="audio/mpeg">
+            Votre navigateur ne supporte pas la lecture audio.
+        </audio>
+        <div id="volume-control">
+            <span id="volume-label">Volume :</span>
+            <input id="volume-slider" type="range" min="0" max="1" step="0.1" value="0.5">
+        </div>
+        <div id="radio-name">Vous écoutez : Aucun</div>
+    </div>
+
+    <!-- Espace Publicité -->
+    <div id="advertisement">
+        <p>Ajoutez votre publicité ici</p>
+        <a href="http://idrissiseddik.github.io/quran" target="_blank">Visitez ce site</a>
+    </div>
+
+    <!-- Formulaire WhatsApp -->
+    <div id="whatsapp-form">
+        <h3>Contactez-nous sur WhatsApp</h3>
+        <form id="whatsapp-form-action">
+            <input type="text" id="name" name="name" placeholder="Nom" required>
+            <input type="tel" id="phone" name="phone" placeholder="Numéro de téléphone" required>
+            <textarea id="message" name="message" placeholder="Message" required></textarea>
+            <button type="button" onclick="sendWhatsAppMessage()">Envoyer via WhatsApp</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        Site développé par M.Seddik El Idrissi
+    </footer>
+
+    <script>
+        const radioSelect = document.getElementById('radio-select');
+        const radioImageContainer = document.getElementById('radio-image-container');
+        const radioImage = document.getElementById('radio-image');
+        const radioPlayer = document.getElementById('radio-player');
+        const radioName = document.getElementById('radio-name');
+        const volumeSlider = document.getElementById('volume-slider');
+        const volumeLabel = document.getElementById('volume-label');
 
         radioSelect.addEventListener('change', () => {
-            const selectedRadio = radioSelect.value;
-            const radioName = radioSelect.options[radioSelect.selectedIndex].getAttribute('data-name');
-            radioPlayer.src = selectedRadio;
+            const selectedOption = radioSelect.options[radioSelect.selectedIndex];
+            const audioSrc = selectedOption.value;
+            const imageSrc = selectedOption.getAttribute('data-image');
+            const stationName = selectedOption.getAttribute('data-name');
+
+            radioPlayer.src = audioSrc;
             radioPlayer.play();
-            isPlaying = true;
-            playPauseBtn.textContent = '⏸️';
-            radioMessage.textContent = `Vous écoutez la radio : ${radioName}`;
+
+            radioName.textContent = `Vous écoutez : ${stationName}`;
+
+            // Mise à jour de l'image de la station
+            const imgElement = document.createElement('img');
+            imgElement.src = imageSrc;
+            imgElement.alt = stationName;
+            radioImage.innerHTML = ''; // Effacer l'ancien contenu
+            radioImage.appendChild(imgElement);
         });
 
-        playPauseBtn.addEventListener('click', () => {
-            if (isPlaying) {
-                radioPlayer.pause();
-                playPauseBtn.textContent = '▶️';
-            } else {
-                radioPlayer.play();
-                playPauseBtn.textContent = '⏸️';
-            }
-            isPlaying = !isPlaying;
+        volumeSlider.addEventListener('input', () => {
+            radioPlayer.volume = volumeSlider.value;
+            volumeLabel.textContent = `Volume : ${Math.round(volumeSlider.value * 100)}%`;
         });
 
-        radioPlayer.addEventListener('timeupdate', () => {
-            const progress = (radioPlayer.currentTime / radioPlayer.duration) * 100;
-            progressBar.style.width = progress + '%';
-        });
-
-        volumeControl.addEventListener('input', () => {
-            radioPlayer.volume = volumeControl.value;
-        });
-
-        function sendMessage(event) {
-            event.preventDefault();
+        function sendWhatsAppMessage() {
             const name = document.getElementById('name').value;
             const message = document.getElementById('message').value;
-            const whatsappUrl = `https://wa.me/212608975435?text=Nom%20:%20${name}%0AMessage%20:%20${message}`;
+
+            // URL WhatsApp avec numéro fixe
+            const whatsappUrl = `https://wa.me/212608975435?text=Nom: ${name}%0AMessage: ${message}`;
             window.open(whatsappUrl, '_blank');
         }
     </script>
